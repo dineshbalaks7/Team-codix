@@ -77,19 +77,72 @@ export default function Contact() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/contact", {
+      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.contact);
+      const web3FormsKey =
+        process.env.NEXT_PUBLIC_WEB3FORMS_KEY ||
+        "f55a71cd-d4a8-4e37-9eea-3d065c97df2d";
+
+      // 1. Direct submission to Web3Forms API (browser client-side delivery)
+      const web3Promise = fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: web3FormsKey,
+          subject: `[Team Codix Inquiry] ${formData.name} - ${formData.service}`,
+          from_name: "Team Codix Website",
+          name: formData.name,
+          email: isEmail ? formData.contact : "codix.team26@gmail.com",
+          phone: !isEmail ? formData.contact : undefined,
+          contact_method: formData.contact,
+          service: formData.service,
+          message: formData.message,
+          botcheck: formData.honeypot || undefined,
+        }),
+      });
+
+      // 2. Concurrently notify internal /api/contact for logging & backup
+      const internalPromise = fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      const data = await res.json().catch(() => null);
+      let web3Success = false;
+      let internalSuccess = false;
+      let internalErrorMsg = "";
 
-      if (!res.ok) {
-        if (data?.errors) {
-          setFieldErrors(data.errors);
+      try {
+        const web3Res = await web3Promise;
+        const web3Data = await web3Res.json().catch(() => null);
+        if (web3Res.ok && web3Data?.success) {
+          web3Success = true;
         }
-        throw new Error(data?.error || "Failed to send message. Please try again or reach out on WhatsApp.");
+      } catch (wErr) {
+        console.warn("Web3Forms submission notice:", wErr);
+      }
+
+      try {
+        const intRes = await internalPromise;
+        const intData = await intRes.json().catch(() => null);
+        if (intRes.ok && intData?.success) {
+          internalSuccess = true;
+        } else if (intData?.errors) {
+          setFieldErrors(intData.errors);
+          internalErrorMsg = intData?.error || "";
+        }
+      } catch (iErr) {
+        console.warn("Internal API notice:", iErr);
+      }
+
+      // If either Web3Forms or internal route succeeded, consider it successful
+      if (!web3Success && !internalSuccess) {
+        throw new Error(
+          internalErrorMsg ||
+            "Failed to send message. Please reach out to us directly on WhatsApp or email."
+        );
       }
 
       setSuccess(true);
@@ -103,7 +156,10 @@ export default function Contact() {
       });
       setFieldErrors({});
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+      const msg =
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again.";
       setErrorMessage(msg);
     } finally {
       setLoading(false);
