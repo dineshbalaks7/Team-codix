@@ -1,6 +1,4 @@
-"use client";
-
-import { MessageSquare } from "lucide-react";
+import { WhatsAppIcon } from "@/components/Icons";
 
 export default function FloatingWhatsApp() {
   return (
@@ -13,9 +11,7 @@ export default function FloatingWhatsApp() {
         className="flex items-center gap-3 px-4 py-3 rounded-full bg-[#16A34A] hover:bg-[#15803D] text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
       >
         <div className="relative">
-          <MessageSquare className="w-5 h-5 fill-current" />
-          <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-white animate-ping" />
-          <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-white" />
+          <WhatsAppIcon className="w-5 h-5 fill-current" />
         </div>
         <span className="text-xs font-bold tracking-tight pr-1 hidden sm:inline-block">
           Chat on WhatsApp

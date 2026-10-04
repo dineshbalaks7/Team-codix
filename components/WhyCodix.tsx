@@ -33,11 +33,11 @@ const POINTS = [
 
 export default function WhyCodix() {
   return (
-    <section className="py-24 sm:py-32 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+    <section className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 sm:mb-20">
+        <div className="max-w-3xl mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-[#E2E8F0] text-xs font-semibold uppercase tracking-wider text-[#0B6BE6] mb-3">
             Why Team Codix
           </div>

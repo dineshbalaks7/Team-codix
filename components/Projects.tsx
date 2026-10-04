@@ -1,199 +1,96 @@
 "use client";
 
-import Image from "next/image";
-import { ExternalLink, CheckCircle2, ArrowRight, Clock } from "lucide-react";
+import { ExternalLink, Fuel } from "lucide-react";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 sm:py-32 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+    <section id="projects" className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-[#E2E8F0] text-xs font-semibold uppercase tracking-wider text-[#0B6BE6] mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <div className="text-xs font-semibold uppercase tracking-wider text-[#0B6BE6] mb-3">
             Selected Work
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#12264F] mb-4">
-            Proven software shipped to real users.
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#12264F]">
+            Projects We&apos;ve Done
           </h2>
-          <p className="text-lg text-[#64748B] leading-relaxed">
-            Every digital product we construct is built to run critical operations reliably. Here is an inside look at our recent bespoke software deployment.
-          </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
-          {/* Featured Large Card: Ganapathi Murugan Agency (8 cols) */}
-          <div className="lg:col-span-8 bg-white border border-[#CBD5E1] rounded-2xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col">
+        {/* Single Centered Card (max-width about 900px) */}
+        <div className="max-w-[900px] mx-auto bg-white border border-[#E2E8F0] rounded-[12px] p-6 sm:p-10 shadow-xs">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
-            {/* Browser Frame Window Header */}
-            <div className="bg-[#F1F5F9] px-4 py-3 border-b border-[#E2E8F0] flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#EF4444]/75" />
-                <div className="w-3 h-3 rounded-full bg-[#F59E0B]/75" />
-                <div className="w-3 h-3 rounded-full bg-[#10B981]/75" />
-                <span className="ml-2 text-xs font-mono text-[#64748B] hidden sm:inline">
-                  ganapathimuruganagency.com
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] font-semibold text-[#0B6BE6] bg-[#EBF3FE] px-2.5 py-0.5 rounded-full border border-[#C5DAF8]">
-                  Production System
-                </span>
-              </div>
-            </div>
-
-            {/* Browser Screenshot Mockup */}
-            <div className="relative w-full aspect-16/10 bg-[#E2E8F0] border-b border-[#E2E8F0] overflow-hidden group">
-              <Image
-                src="/ganapathi-murugan.png"
-                alt="Ganapathi Murugan Agency Custom Business Software Portal"
-                fill
-                sizes="(max-width: 1024px) 100vw, 66vw"
-                className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-            </div>
-
-            {/* Content Body */}
-            <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+            {/* Left Side (Desktop): Text, Chips, CTA (Mobile: Stacks below visual) */}
+            <div className="lg:col-span-6 flex flex-col justify-between order-2 lg:order-1">
               <div>
-                {/* Project Tag */}
-                <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#0B6BE6] bg-[#C5DAF8]/30 px-3 py-1 rounded-md">
-                    Custom Business Software
-                  </span>
-                  <span className="text-xs text-[#64748B] font-medium">
-                    Wholesale ERP & Distribution Management
-                  </span>
-                </div>
-
-                {/* Client Name */}
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#12264F] mb-4">
-                  Ganapathi Murugan Agency
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#12264F] mb-4 tracking-tight">
+                  Ganapathi Murugan Fuel Agency
                 </h3>
 
-                {/* Problem & Solution Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  <div className="p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-                    <div className="text-xs font-bold uppercase tracking-wider text-[#EF4444] mb-1">
-                      The Challenge
-                    </div>
-                    <p className="text-sm text-[#334155] leading-relaxed">
-                      Manual paper receipts, disjointed godown stock records, and delayed dealer dispatch queues were limiting daily order fulfillment and causing inventory slippage.
-                    </p>
-                  </div>
+                <p className="text-base text-[#475569] leading-relaxed mb-6">
+                  A complete landing page and a full internal management software, integrated with WhatsApp to send offer messages to customers.
+                </p>
 
-                  <div className="p-4 rounded-xl bg-[#F0FDF4] border border-[#DCFCE7]">
-                    <div className="text-xs font-bold uppercase tracking-wider text-[#16A34A] mb-1">
-                      The Solution
-                    </div>
-                    <p className="text-sm text-[#14532D] leading-relaxed">
-                      A centralized cloud portal unifying multi-warehouse inventory, instant B2B invoice generation, automated payment ledger tracking, and live shipment dispatch.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Key Features */}
-                <div className="mb-6">
-                  <div className="text-xs font-semibold uppercase tracking-wider text-[#64748B] mb-3">
-                    Key Features Built
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <div className="flex items-start gap-2 text-xs sm:text-sm text-[#334155]">
-                      <CheckCircle2 className="w-4 h-4 text-[#0B6BE6] flex-shrink-0 mt-0.5" />
-                      <span>Real-Time Multi-Godown Stock & Batch Sync</span>
-                    </div>
-                    <div className="flex items-start gap-2 text-xs sm:text-sm text-[#334155]">
-                      <CheckCircle2 className="w-4 h-4 text-[#0B6BE6] flex-shrink-0 mt-0.5" />
-                      <span>Automated GST Billing & Invoicing System</span>
-                    </div>
-                    <div className="flex items-start gap-2 text-xs sm:text-sm text-[#334155]">
-                      <CheckCircle2 className="w-4 h-4 text-[#0B6BE6] flex-shrink-0 mt-0.5" />
-                      <span>Dealer Order Portal & Delivery Route Tracking</span>
-                    </div>
-                    <div className="flex items-start gap-2 text-xs sm:text-sm text-[#334155]">
-                      <CheckCircle2 className="w-4 h-4 text-[#0B6BE6] flex-shrink-0 mt-0.5" />
-                      <span>Role-Based Staff Permissions & Credit Ledgers</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Measurable Benefit Banner */}
-                <div className="p-4 rounded-xl bg-[#EBF3FE] border border-[#C5DAF8] text-[#06357A] mb-8">
-                  <div className="text-xs font-bold uppercase tracking-wider text-[#0B6BE6] mb-1">
-                    Quantified Outcome
-                  </div>
-                  <p className="text-sm font-semibold">
-                    Cut order fulfillment turnaround by 75% and eliminated inventory variance across regional supply chains.
-                  </p>
+                {/* Three Small Pill Chips */}
+                <div className="flex flex-wrap items-center gap-2 mb-8">
+                  <span className="px-3 py-1 rounded-full bg-[#C5DAF8] text-[#12264F] text-xs font-medium">
+                    Landing Page
+                  </span>
+                  <span className="px-3 py-1 rounded-full bg-[#C5DAF8] text-[#12264F] text-xs font-medium">
+                    Management Software
+                  </span>
+                  <span className="px-3 py-1 rounded-full bg-[#C5DAF8] text-[#12264F] text-xs font-medium">
+                    WhatsApp Integration
+                  </span>
                 </div>
               </div>
 
               {/* Action Button */}
-              <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
+              <div>
                 <a
                   href="https://ganapathimuruganagency.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#12264F] text-white text-sm font-semibold hover:bg-[#0B6BE6] transition-colors group"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#0B6BE6] hover:bg-[#12264F] text-white text-sm font-semibold transition-colors duration-200"
                 >
                   <span>Visit Website</span>
-                  <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ExternalLink className="w-4 h-4" />
                 </a>
-                <span className="text-xs text-[#64748B] font-mono">
-                  Production Deploy · Verified
-                </span>
+              </div>
+            </div>
+
+            {/* Right Side (Desktop): Simple Browser Frame with Fuel Company Icon Visual (Mobile: Stacks on top) */}
+            <div className="lg:col-span-6 order-1 lg:order-2">
+              <div className="bg-white border border-[#E2E8F0] rounded-lg overflow-hidden shadow-2xs">
+                {/* Simple Browser Chrome (Three small gray dots and the URL) */}
+                <div className="bg-[#F8FAFC] px-3 py-2 border-b border-[#E2E8F0] flex items-center gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#94A3B8]" />
+                    <span className="w-2 h-2 rounded-full bg-[#94A3B8]" />
+                    <span className="w-2 h-2 rounded-full bg-[#94A3B8]" />
+                  </div>
+                  <div className="flex-1 bg-white px-2 py-0.5 rounded border border-[#E2E8F0] text-[10px] text-[#64748B] font-mono truncate">
+                    ganapathimuruganagency.com
+                  </div>
+                </div>
+
+                {/* Fuel Company Graphic Visual */}
+                <div className="relative aspect-4/3 w-full bg-[#F8FAFC] flex flex-col items-center justify-center p-8 text-center select-none">
+                  <div className="w-20 h-20 rounded-2xl bg-[#EBF3FE] border border-[#C5DAF8] text-[#0B6BE6] flex items-center justify-center mb-4 shadow-2xs">
+                    <Fuel className="w-10 h-10 text-[#0B6BE6]" strokeWidth={1.75} />
+                  </div>
+                  <div className="text-base font-bold text-[#12264F] mb-1">
+                    Fuel & Petroleum Operations
+                  </div>
+                  <div className="text-xs text-[#64748B]">
+                    Authorized Retail Dealership & Pump Portal
+                  </div>
+                </div>
               </div>
             </div>
 
           </div>
-
-          {/* Placeholder Card: More Projects Coming Soon (4 cols) */}
-          <div className="lg:col-span-4 bg-white border border-dashed border-[#CBD5E1] rounded-2xl p-8 flex flex-col justify-between text-left relative overflow-hidden">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#F1F5F9] border border-[#E2E8F0] text-xs font-semibold text-[#64748B] mb-6">
-                <Clock className="w-3.5 h-3.5 text-[#0B6BE6]" />
-                In Active Engineering
-              </div>
-
-              <h3 className="text-2xl font-bold text-[#12264F] mb-4">
-                More projects coming soon
-              </h3>
-
-              <p className="text-sm text-[#64748B] leading-relaxed mb-6">
-                We are actively developing bespoke software systems, AI-powered support infrastructure, and mobile applications for a select group of scaling enterprises.
-              </p>
-
-              <div className="space-y-3 pt-4 border-t border-[#F1F5F9]">
-                <div className="p-3 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0]">
-                  <div className="text-xs font-semibold text-[#12264F]">AI Knowledge Agent</div>
-                  <div className="text-xs text-[#64748B] mt-0.5">Fintech lead routing & compliance bot</div>
-                </div>
-
-                <div className="p-3 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0]">
-                  <div className="text-xs font-semibold text-[#12264F]">Cross-Platform Fleet App</div>
-                  <div className="text-xs text-[#64748B] mt-0.5">Real-time driver dispatch & telemetry</div>
-                </div>
-
-                <div className="p-3 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0]">
-                  <div className="text-xs font-semibold text-[#12264F]">Direct-to-Consumer Store</div>
-                  <div className="text-xs text-[#64748B] mt-0.5">Headless Next.js commerce experience</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-[#E2E8F0]">
-              <a
-                href="#contact"
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#F8FAFC] hover:bg-[#EBF3FE] text-[#12264F] hover:text-[#0B6BE6] border border-[#CBD5E1] text-xs font-bold transition-all"
-              >
-                <span>Discuss Your Project</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </div>
-
         </div>
 
       </div>

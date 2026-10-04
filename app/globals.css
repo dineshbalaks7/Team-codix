@@ -92,6 +92,20 @@ h1, h2, h3, h4, h5, h6 {
   animation: float 6s ease-in-out infinite;
 }
 
+/* Authentic Typewriter Cursor Blink */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 0.9s step-end infinite;
+}
+
 /* Focus styles */
 button:focus-visible,
 a:focus-visible,

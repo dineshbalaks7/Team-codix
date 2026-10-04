@@ -6,11 +6,11 @@ import Link from "next/link";
 import { Menu, X, ArrowRight } from "lucide-react";
 
 const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Process", href: "/#process" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -58,26 +58,26 @@ export default function Navbar() {
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="relative text-[14px] font-medium text-[#12264F]/80 hover:text-[#0B6BE6] transition-colors py-1 group"
               >
                 {link.label}
                 <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#0B6BE6] transition-all duration-300 group-hover:w-full" />
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#0B6BE6] text-white text-[14px] font-semibold tracking-tight shadow-sm hover:bg-[#06357A] transition-all duration-200 active:scale-[0.98]"
             >
               <span>Get Free Demo</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -100,24 +100,24 @@ export default function Navbar() {
         <div className="md:hidden border-b border-[#E2E8F0] bg-white px-4 pt-3 pb-6 shadow-lg animate-in slide-in-from-top duration-200">
           <div className="flex flex-col gap-3">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 onClick={closeMenu}
                 className="px-3 py-2 text-[15px] font-medium text-[#12264F] hover:bg-[#F8FAFC] hover:text-[#0B6BE6] rounded-md transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <div className="pt-3 border-t border-[#E2E8F0]">
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 onClick={closeMenu}
                 className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[#0B6BE6] text-white text-[14px] font-semibold text-center shadow-sm hover:bg-[#06357A] transition-colors"
               >
                 <span>Get Free Demo</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

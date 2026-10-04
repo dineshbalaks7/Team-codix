@@ -47,11 +47,11 @@ const STEPS = [
 
 export default function Process() {
   return (
-    <section id="process" className="py-24 sm:py-32 bg-white border-b border-[#E2E8F0] overflow-hidden">
+    <section id="process" className="py-16 sm:py-20 bg-white border-b border-[#E2E8F0] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 sm:mb-20">
+        <div className="max-w-3xl mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#F1F5F9] border border-[#E2E8F0] text-xs font-semibold uppercase tracking-wider text-[#0B6BE6] mb-3">
             How We Work
           </div>

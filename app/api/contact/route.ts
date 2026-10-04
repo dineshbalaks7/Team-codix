@@ -141,7 +141,7 @@ export async function POST(request: Request) {
               </div>
             </div>
             <div class="footer">
-              Sent via Team Codix Website Inquiry Form · Deployable on Vercel
+              Sent via Team Codix Website Inquiry Form
             </div>
           </div>
         </body>

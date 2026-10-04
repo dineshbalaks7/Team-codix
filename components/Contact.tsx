@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, Phone, MessageSquare, ArrowRight, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
-import { InstagramIcon } from "@/components/Icons";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Mail, Phone, ArrowRight, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { InstagramIcon, WhatsAppIcon } from "@/components/Icons";
 
 const SERVICE_OPTIONS = [
   "Website",
@@ -19,7 +20,28 @@ export default function Contact() {
     service: "Website",
     message: "",
     honeypot: "",
+    agreedToTerms: false,
   });
+
+  useEffect(() => {
+    const handleSelectService = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      const selected = customEvent.detail;
+      if (!selected) return;
+
+      let matchedService = selected;
+      if (selected === "Websites") matchedService = "Website";
+      else if (selected === "AI Chatbots") matchedService = "AI Chatbot";
+      else if (selected === "Mobile Apps") matchedService = "Mobile App";
+
+      if (SERVICE_OPTIONS.includes(matchedService)) {
+        setFormData((prev) => ({ ...prev, service: matchedService }));
+      }
+    };
+
+    window.addEventListener("codix-select-service", handleSelectService);
+    return () => window.removeEventListener("codix-select-service", handleSelectService);
+  }, []);
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -36,6 +58,9 @@ export default function Contact() {
     }
     if (!formData.message.trim() || formData.message.trim().length < 10) {
       errors.message = "Please write a brief message (minimum 10 characters).";
+    }
+    if (!formData.agreedToTerms) {
+      errors.agreedToTerms = "Please agree to the Privacy Policy and Terms of Service to continue.";
     }
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
@@ -74,6 +99,7 @@ export default function Contact() {
         service: "Website",
         message: "",
         honeypot: "",
+        agreedToTerms: false,
       });
       setFieldErrors({});
     } catch (err: unknown) {
@@ -85,7 +111,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+    <section id="contact" className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -152,7 +178,7 @@ export default function Contact() {
                     className="flex items-center gap-3 p-4 rounded-xl bg-white border border-[#CBD5E1] hover:border-[#10B981] shadow-2xs hover:shadow-sm transition-all duration-200 group"
                   >
                     <div className="w-10 h-10 rounded-lg bg-[#DCFCE7] text-[#16A34A] flex items-center justify-center flex-shrink-0 group-hover:bg-[#16A34A] group-hover:text-white transition-colors">
-                      <MessageSquare className="w-4 h-4" />
+                      <WhatsAppIcon className="w-4 h-4" />
                     </div>
                     <div className="min-w-0">
                       <div className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider">
@@ -355,6 +381,37 @@ export default function Contact() {
                   )}
                 </div>
 
+                {/* Consent Checkbox */}
+                <div className="pt-1">
+                  <label className="flex items-start gap-3 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={formData.agreedToTerms}
+                      onChange={(e) => {
+                        setFormData({ ...formData, agreedToTerms: e.target.checked });
+                        if (fieldErrors.agreedToTerms) {
+                          setFieldErrors({ ...fieldErrors, agreedToTerms: "" });
+                        }
+                      }}
+                      className="mt-0.5 h-4 w-4 rounded border-[#CBD5E1] text-[#0B6BE6] focus:ring-[#0B6BE6] cursor-pointer"
+                    />
+                    <span className="text-xs text-[#475569] leading-relaxed">
+                      I agree to the{" "}
+                      <Link href="/privacy-policy" className="text-[#0B6BE6] font-medium underline hover:text-[#12264F]">
+                        Privacy Policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link href="/terms" className="text-[#0B6BE6] font-medium underline hover:text-[#12264F]">
+                        Terms of Service
+                      </Link>
+                      . <span className="text-[#EF4444]">*</span>
+                    </span>
+                  </label>
+                  {fieldErrors.agreedToTerms && (
+                    <p className="mt-1.5 text-xs text-[#DC2626] font-medium">{fieldErrors.agreedToTerms}</p>
+                  )}
+                </div>
+
                 {/* Submit Button */}
                 <button
                   type="submit"
@@ -374,8 +431,11 @@ export default function Contact() {
                   )}
                 </button>
 
-                <p className="text-center text-[11px] text-[#64748B]">
-                  🔒 Your information is confidential. We will never spam or share your contact data.
+                <p className="text-center text-xs text-[#64748B]">
+                  By submitting this form you agree to our{" "}
+                  <Link href="/privacy-policy" className="text-[#0B6BE6] underline hover:text-[#12264F]">
+                    Privacy Policy
+                  </Link>.
                 </p>
               </form>
             )}

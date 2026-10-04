@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 
 export default function FreeDemoBanner() {
   return (
-    <section className="relative py-20 sm:py-24 bg-[#12264F] text-white overflow-hidden studio-grid-dark">
+    <section className="relative py-14 sm:py-16 bg-[#12264F] text-white overflow-hidden studio-grid-dark">
       {/* Background radial accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-[#0B6BE6]/15 blur-[120px] pointer-events-none rounded-full" />
 

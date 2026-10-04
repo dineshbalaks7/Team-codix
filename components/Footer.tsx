@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Phone, MessageSquare, ArrowUpRight } from "lucide-react";
-import { InstagramIcon } from "@/components/Icons";
+import { Mail, Phone, ArrowUpRight } from "lucide-react";
+import { InstagramIcon, WhatsAppIcon } from "@/components/Icons";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -56,7 +56,7 @@ export default function Footer() {
                 aria-label="Message Team Codix on WhatsApp"
                 className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#C5DAF8] hover:text-white hover:bg-[#16A34A] hover:border-[#16A34A] transition-all duration-200"
               >
-                <MessageSquare className="w-4 h-4" />
+                <WhatsAppIcon className="w-4 h-4" />
               </a>
 
               <a
@@ -179,9 +179,13 @@ export default function Footer() {
             © {currentYear} Team Codix. All rights reserved.
           </div>
           <div className="flex items-center gap-6">
-            <span>Built Clean & Fast</span>
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
             <span>·</span>
-            <span>Deployable on Vercel</span>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
           </div>
         </div>
 

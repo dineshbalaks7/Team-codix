@@ -1,13 +1,12 @@
 "use client";
 
-import { ArrowUpRight, Code2, Layout, Smartphone } from "lucide-react";
+import { ArrowUpRight, Code2, Palette, Bot } from "lucide-react";
 import { InstagramIcon } from "@/components/Icons";
 
 const TEAM_MEMBERS = [
   {
     name: "Engineering Lead",
     role: "Full-Stack Architecture & Cloud",
-    initials: "TC",
     tag: "Core Systems",
     icon: Code2,
     description: "Specializes in scalable backend pipelines, Next.js applications, and custom business ERPs.",
@@ -15,28 +14,26 @@ const TEAM_MEMBERS = [
   {
     name: "Design Principal",
     role: "Product Design & Brand Systems",
-    initials: "UX",
     tag: "Interface & Motion",
-    icon: Layout,
+    icon: Palette,
     description: "Obsessed with editorial typography, design tokens, and friction-free user flows.",
   },
   {
     name: "Mobile & AI Specialist",
     role: "Cross-Platform & LLM Integration",
-    initials: "AI",
     tag: "Mobile & Agents",
-    icon: Smartphone,
+    icon: Bot,
     description: "Builds high-performance native iOS/Android apps and intelligent customer support bots.",
   },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-24 sm:py-32 bg-white border-b border-[#E2E8F0]">
+    <section id="about" className="py-16 sm:py-20 bg-white border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 sm:mb-12 items-start">
           <div className="lg:col-span-5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#F1F5F9] border border-[#E2E8F0] text-xs font-semibold uppercase tracking-wider text-[#0B6BE6] mb-3">
               About The Studio
@@ -78,10 +75,10 @@ export default function About() {
                 className="bg-[#F8FAFC] border border-[#CBD5E1] rounded-2xl p-7 shadow-2xs hover:shadow-md hover:border-[#0B6BE6]/40 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  {/* Photo / Avatar Placeholder with Sleek Studio Style */}
+                  {/* Avatar Icon Box with Sleek Studio Style */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 rounded-xl bg-[#12264F] text-white flex items-center justify-center font-bold text-lg shadow-sm border border-[#06357A]">
-                      <span className="font-mono text-[#C5DAF8]">{member.initials}</span>
+                    <div className="w-14 h-14 rounded-xl bg-[#12264F] text-[#C5DAF8] flex items-center justify-center shadow-sm border border-[#06357A]">
+                      <Icon className="w-7 h-7 text-[#C5DAF8]" strokeWidth={1.8} />
                     </div>
                     <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#0B6BE6] bg-white border border-[#E2E8F0] px-2.5 py-1 rounded-md">
                       {member.tag}
